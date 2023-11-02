@@ -6,3 +6,5 @@
 OPENAI_API_KEY=sk-CxkQSQ85TFuLmsdfdsfelT3BlbkFJ3YaKjkfh2uhsduih
 
 Дальше пишите в файл textUser.txt ваш запрос в chatGpt и получаете в вашу консоль ответ либо в файл answer.txt
+
+![Описание изображения](example.png)
