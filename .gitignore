@@ -17,3 +17,5 @@ build/
 
 .env
 .idea/vcs.xml
+modules.xml
+openai.iml
