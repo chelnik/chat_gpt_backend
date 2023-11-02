@@ -73,7 +73,7 @@ func (a App) Streaming() {
 
 		fmt.Printf(response.Choices[0].Delta.Content)
 		content := fmt.Sprintf("%s", response.Choices[0].Delta.Content)
-		err = writeToFile("assistant.txt", content)
+		err = writeToFile("answer.txt", content)
 	}
 }
 
