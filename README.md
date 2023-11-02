@@ -1,3 +1,5 @@
+Мой канал в telegram: @golang_baza
+
 Это небольшой сервис который я написал используя библиотеку Саши Баранова "github.com/sashabaranov/go-openai"
 что бы без впн использовать chat-gpt
 
