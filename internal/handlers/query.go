@@ -11,7 +11,15 @@ type ErrResp struct {
 	Message string `json:"error"`
 }
 
-// sendSingleQuery обработчик для одного вопроса
+// @Summary Вопрос-ответ
+// @Description Работает без поддержания диалога
+// @Tags gptResponse
+// @Accept json
+// @Produce json
+// @Param q body domain.SingleQuery true "Передача ключа доступа и запроса к ChatGPT"
+// @Success 200 {object} domain.ChatResponse
+// @Failure default {object} ErrResp
+// @Router /api/v1/query [post]
 func (h *Handler) sendSingleQuery(ctx *gin.Context) {
 	var q domain.SingleQuery
 

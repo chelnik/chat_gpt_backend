@@ -7,7 +7,7 @@ import (
 )
 
 type Responder interface {
-	ResponseSingle(query domain.SingleQuery) (openai.ChatCompletionResponse, error)
+	ResponseSingle(query domain.SingleQuery) (domain.ChatResponse, error)
 }
 
 type ResponseService struct {
@@ -18,8 +18,8 @@ func NewResponseService() *ResponseService {
 	return &ResponseService{}
 }
 
-// ResponseSingle стандартый ответ ChatGPT
-func (r *ResponseService) ResponseSingle(query domain.SingleQuery) (openai.ChatCompletionResponse, error) {
+// ResponseSingle стандартый одиночный ответ ChatGPT
+func (r *ResponseService) ResponseSingle(query domain.SingleQuery) (domain.ChatResponse, error) {
 	client := openai.NewClient(query.Key)
 	resp, err := client.CreateChatCompletion(
 		context.Background(),
@@ -34,5 +34,5 @@ func (r *ResponseService) ResponseSingle(query domain.SingleQuery) (openai.ChatC
 		},
 	)
 
-	return resp, err
+	return domain.Wrap(resp), err
 }

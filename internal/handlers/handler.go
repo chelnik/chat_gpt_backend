@@ -2,6 +2,9 @@ package handlers
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/swaggo/files"
+	"github.com/swaggo/gin-swagger"
+	_ "openai/docs"
 	"openai/internal/services"
 )
 
@@ -17,11 +20,13 @@ func NewHandler(service services.Service) *Handler {
 func (h *Handler) Init() *gin.Engine {
 	r := gin.New()
 
+	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+
 	api := r.Group("/api")
 	{
 		v1 := api.Group("/v1")
 		{
-			v1.GET("query", h.sendSingleQuery)
+			v1.GET("/query", h.sendSingleQuery)
 		}
 	}
 
