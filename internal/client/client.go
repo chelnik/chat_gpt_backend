@@ -14,7 +14,7 @@ type App struct {
 }
 
 // Streaming streaming потоковый ответ от чат гпт
-// писашет посимвольно ответ от чат гпт в консоль и в файл
+// пишет посимвольно ответ от чат гпт в консоль и в файл
 func (a App) Streaming() {
 	c := openai.NewClient(a.Key)
 	ctx := context.Background()
