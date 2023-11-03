@@ -10,16 +10,16 @@ type Responder interface {
 	ResponseSingle(query domain.SingleQuery) (openai.ChatCompletionResponse, error)
 }
 
-type SingleResponse struct {
+type ResponseService struct {
 	Responder
 }
 
-func NewSingleResponder() *SingleResponse {
-	return &SingleResponse{}
+func NewResponseService() *ResponseService {
+	return &ResponseService{}
 }
 
 // ResponseSingle стандартый ответ ChatGPT
-func (r *SingleResponse) ResponseSingle(query domain.SingleQuery) (openai.ChatCompletionResponse, error) {
+func (r *ResponseService) ResponseSingle(query domain.SingleQuery) (openai.ChatCompletionResponse, error) {
 	client := openai.NewClient(query.Key)
 	resp, err := client.CreateChatCompletion(
 		context.Background(),

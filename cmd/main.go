@@ -21,7 +21,7 @@ func main() {
 	a := client.App{Key: os.Getenv("OPENAI_API_KEY")}
 	a.Streaming()
 
-	StartHTTPServer()
+	//StartHTTPServer()
 }
 
 func StartHTTPServer() {
