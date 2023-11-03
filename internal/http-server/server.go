@@ -9,10 +9,10 @@ type Server struct {
 	httpServer *http.Server
 }
 
-func (s *Server) Run(cfg configs.ServerConfig) error {
+func (s *Server) Run(cfg configs.ServerConfig, handler http.Handler) error {
 	s.httpServer = &http.Server{
 		Addr:    ":" + cfg.Port,
-		Handler: nil,
+		Handler: handler,
 	}
 
 	return s.httpServer.ListenAndServe()
