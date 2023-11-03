@@ -1,4 +1,4 @@
-package main
+package client
 
 import (
 	"bytes"
@@ -11,13 +11,15 @@ import (
 	"github.com/sashabaranov/go-openai"
 )
 
-func (a App) image() {
-	c := openai.NewClient(a.key)
+// GenerateImage создает изображение по запросу
+func (a App) GenerateImage(prompt string) {
+	c := openai.NewClient(a.Key)
 	ctx := context.Background()
 
 	// Sample image by link
+	//Prompt:         "Parrot on a skateboard performs a trick, cartoon style, natural light, high detail",
 	reqUrl := openai.ImageRequest{
-		Prompt:         "Parrot on a skateboard performs a trick, cartoon style, natural light, high detail",
+		Prompt:         prompt,
 		Size:           openai.CreateImageSize256x256,
 		ResponseFormat: openai.CreateImageResponseFormatURL,
 		N:              1,
