@@ -1,11 +1,11 @@
 package services
 
 type Service struct {
-	Responder
+	ResponseService
 }
 
 func NewService() *Service {
 	return &Service{
-		Responder: NewSingleResponder(),
+		ResponseService: *NewResponseService(),
 	}
 }

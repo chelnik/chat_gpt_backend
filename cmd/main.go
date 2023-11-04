@@ -14,6 +14,14 @@ import (
 	"github.com/joho/godotenv"
 )
 
+// @title ChatGpt backend
+// @version 1.0
+// @description Backend приложения для общения с ChatGPT
+// @contact.name https://t.me/Sayzeks
+
+// @host localhost:8080
+// @BasePath /
+
 func main() {
 	// Read .env file.
 	godotenv.Load()
