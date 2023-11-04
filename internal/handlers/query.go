@@ -30,7 +30,7 @@ func (h *Handler) sendSingleQuery(ctx *gin.Context) {
 		return
 	}
 
-	resp, err := h.service.Responder.ResponseSingle(q)
+	resp, err := h.service.ResponseSingle(q)
 	if err != nil {
 		log.Printf("Ошибка в одиночном вопросе - %v", err)
 
