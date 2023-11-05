@@ -28,7 +28,7 @@ func (r *ResponseService) ResponseSingle(query domain.SingleQuery) (domain.ChatR
 			Messages: []openai.ChatCompletionMessage{
 				{
 					Role:    openai.ChatMessageRoleUser,
-					Content: query.Inquiry,
+					Content: query.Query,
 				},
 			},
 		},

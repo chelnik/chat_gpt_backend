@@ -2,7 +2,7 @@ module openai
 
 go 1.21
 
-toolchain go1.21.1
+toolchain go1.21.3
 
 require (
 	github.com/gin-gonic/gin v1.9.1
