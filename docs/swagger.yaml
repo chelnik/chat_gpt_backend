@@ -1,0 +1,93 @@
+basePath: /
+definitions:
+  domain.ChatCompletionChoice:
+    properties:
+      finish_reason:
+        type: string
+      index:
+        type: integer
+      message:
+        $ref: '#/definitions/domain.ChatCompletionMessage'
+    type: object
+  domain.ChatCompletionMessage:
+    properties:
+      content:
+        type: string
+      name:
+        type: string
+      role:
+        type: string
+    type: object
+  domain.ChatResponse:
+    properties:
+      choices:
+        items:
+          $ref: '#/definitions/domain.ChatCompletionChoice'
+        type: array
+      created:
+        type: integer
+      id:
+        type: string
+      model:
+        type: string
+      object:
+        type: string
+      usage:
+        $ref: '#/definitions/domain.Usage'
+    type: object
+  domain.SingleQuery:
+    properties:
+      inquiry:
+        type: string
+      key:
+        type: string
+    type: object
+  domain.Usage:
+    properties:
+      completion_tokens:
+        type: integer
+      prompt_tokens:
+        type: integer
+      total_tokens:
+        type: integer
+    type: object
+  handlers.ErrResp:
+    properties:
+      error:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact:
+    name: https://t.me/Sayzeks
+  description: Backend приложения для общения с ChatGPT
+  title: ChatGpt backend
+  version: "1.0"
+paths:
+  /api/v1/query:
+    post:
+      consumes:
+      - application/json
+      description: Работает без поддержания диалога
+      parameters:
+      - description: Передача ключа доступа и запроса к ChatGPT
+        in: body
+        name: q
+        required: true
+        schema:
+          $ref: '#/definitions/domain.SingleQuery'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/domain.ChatResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/handlers.ErrResp'
+      summary: Вопрос-ответ
+      tags:
+      - gptResponse
+swagger: "2.0"
